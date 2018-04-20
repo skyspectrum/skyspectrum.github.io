@@ -37,9 +37,9 @@ timezone: Asia/Shanghai
 # 5. Collections
 collections:
   posts:
-    title: myself_Blog # Needed for Siteleaf
+    title: My Blog # Needed for Siteleaf
     output: true
-    description: "this is the description of the site" # The post list page content
+    description: "Keep Coding & Never Stop Learning" # The post list page content
 
 # 6. Jekyll collections settings
 defaults:
