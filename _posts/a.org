@@ -1,0 +1,32 @@
+* grub启动器介绍
+
+- GRand Unified Bootloader
+- /bootloader/: 电脑启动后第一个运行的软件程序，加载操作系统内核,并把\\
+  控制权交给内核。eg. LILO ,grub, windows loader
+** grub启动界面常用命令
+- e 进入编缉界面
+- c 进入grub命令行交互界面
+- 上面方向键选择启动项
+- 任何界面可使用esc退回到主界面
+** grub设备命令约定
+   grub使用的命令约定与linux系统使用的稍有不同。 linux 使用sda,sda1,hda\\
+   ,hda1,vda,vda1之类的格式来命令硬盘或分区,grub使用（hd0,gpt1)\\
+   这样的格式来命名硬盘或分区
+- 设备名用()括起来
+- hd表式硬盘,fd表示软盘
+- 硬盘驱动从0开始编号
+- msdos表示传统分区，gpt表标gpt分区
+- 分区编号从1开始，如果有扩展分区，扩展分区从5开始计数。
+- 可省略分区，表示整块盘。
+- eg. (fd0) => 整块软盘， (hd0, msdos2) => 第一块硬盘的第二个传统分区，\\
+  （hd2,gpt3) => 第三块硬盘的第三个gpt分区， （hd0, msdos5) => 第一块 \\
+  硬盘的第一个扩展分区。
+** grub命令行界面常用命令
++ 我们的好朋友TAB键，TAB可以自动补全信息，包括命令补全，文件补全
++ cat：查看文件内容与linux中的cat相似
++ set: 设置变量值，例：set root=(hd0, lvm/os-root)
++ insmod: 使用insmod modulename加一个模块 常用的模块包括xfs, gzio,\\
+  _lvm_.
++ linux16: 加载linux内核文件 linux16 pathtokernel arg1=value1 ...
++ initrd16: 加载initramfs initrd16 pathtoranfs
++ boot：启动操作系统
